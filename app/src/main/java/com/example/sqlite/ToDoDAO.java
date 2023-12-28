@@ -2,6 +2,7 @@ package com.example.sqlite;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -45,5 +46,37 @@ public class ToDoDAO {
         }
         return list;
     }
+    public boolean addTodo(Todo toDo){
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        database.beginTransaction();
+        ContentValues values = new ContentValues();
+        values.put("TITLE",toDo.getTitle());
+        values.put("CONTENT",toDo.getContent());
+        values.put("DATE",toDo.getDate());
+        values.put("TYPE",toDo.getType());
+        values.put("STATUS",toDo.getStatus());
+        long check = database.insert("TODO" , null, values);
+        return check != -1;
+    }
 
+    public boolean updateTodo(Todo toDo) {
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("TITLE", toDo.getTitle());
+        values.put("CONTENT", toDo.getContent());
+        values.put("DATE", toDo.getDate());
+        values.put("TYPE", toDo.getType());
+        values.put("STATUS", toDo.getStatus());
+
+        int rowsAffected = database.update("TODO", values, "ID=?", new String[]{String.valueOf(toDo.getId())});
+
+        return rowsAffected > 0;
+    }
+
+    public boolean deleteTodo(long todoId) {
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        int rowsAffected = database.delete("TODO", "ID=?", new String[]{String.valueOf(todoId)});
+        return rowsAffected > 0;
+    }
 }

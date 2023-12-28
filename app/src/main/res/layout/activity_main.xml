@@ -45,19 +45,19 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ADD" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="UDATE" />
+            android:text="UPDATE" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="DELETE" />
@@ -68,9 +68,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:divider="#CDDC39"
-        android:dividerHeight="1dp"
+        android:divider="#F3EBD5"
+        android:dividerHeight="8dp"
         android:scrollbars="vertical"/>
-
 
 </LinearLayout>

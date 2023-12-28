@@ -13,7 +13,7 @@ public class ToDoAdapter extends ArrayAdapter<Todo> {
     private Context context;
     private List<Todo> tasks;
 
-    public ToDoAdapter(Context context, List<Todo> tasks){
+    public ToDoAdapter(Context context, List<Todo> tasks) {
         super(context, 0, tasks);
         this.context = context;
         this.tasks = tasks;
@@ -22,7 +22,7 @@ public class ToDoAdapter extends ArrayAdapter<Todo> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Todo task = getItem(position);
-        if(convertView==null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_todo, parent, false);
         }
         TextView taskTitle = convertView.findViewById(R.id.task_title);
